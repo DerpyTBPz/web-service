@@ -13,6 +13,9 @@ class Task extends Model
         'due_date'
     ];
 
-    //
+    public function subtasks()
+    {
+        return $this->hasMany(Subtask::class);
+    }
 }
 
