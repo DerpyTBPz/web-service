@@ -12,15 +12,15 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks', [TaskController::class, 'index']);
     Route::post('/tasks', [TaskController::class, 'store']);
-    Route::get('/tasks/{task}', [TaskController::class, 'show']);
-    Route::put('/tasks/{task}', [TaskController::class, 'update']);
-    Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
+    Route::get('/tasks/{id}', [TaskController::class, 'show']);
+    Route::put('/tasks/{id}', [TaskController::class, 'update']);
+    Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
 
     Route::get('/subtasks', [SubtaskController::class, 'index']);
     Route::post('/subtasks', [SubtaskController::class, 'store']);
-    Route::get('/subtasks/{subtask}', [SubtaskController::class, 'show']);
-    Route::put('/subtasks/{subtask}', [SubtaskController::class, 'update']);
-    Route::delete('/subtasks/{subtask}', [SubtaskController::class, 'destroy']);
+    Route::get('/subtasks/{id}', [SubtaskController::class, 'show']);
+    Route::put('/subtasks/{id}', [SubtaskController::class, 'update']);
+    Route::delete('/subtasks/{id}', [SubtaskController::class, 'destroy']);
 });
 
 
