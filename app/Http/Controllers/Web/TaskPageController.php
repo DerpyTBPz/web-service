@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Actions\Tasks\GenerateSubtasksAction;
 use App\Enums\TaskStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
@@ -27,6 +28,19 @@ class TaskPageController extends Controller
     public function show(Task $task): View
     {
         return view('tasks.show', compact('task'));
+    }
+
+    public function generateSubtasks(
+        Task $task,
+        GenerateSubtasksAction $generateSubtasksAction
+    ): View {
+        $result = $generateSubtasksAction->handle($task);
+
+        return view('tasks.show', [
+            'task'               => $task,
+            'generatedSubtasks'  => $result->subtasks,
+            'rawResponse'        => $result->rawResponse,
+        ]);
     }
 
     public function edit(Task $task): View

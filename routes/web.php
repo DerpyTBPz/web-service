@@ -17,3 +17,4 @@ Route::post('/tasks', [TaskPageController::class, 'store'])->name('tasks.store')
 Route::put('/tasks/{task}', [TaskPageController::class, 'update'])->name('tasks.update');
 Route::patch('/tasks/{task}/status', [TaskPageController::class, 'updateStatus'])->name('tasks.updateStatus');
 Route::delete('/tasks/{task}', [TaskPageController::class, 'destroy'])->name('tasks.destroy');
+Route::post('/tasks/{task}/generate-subtasks', [TaskPageController::class, 'generateSubtasks'])->name('tasks.generateSubtasks');

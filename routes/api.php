@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HealthController;
+use App\Http\Controllers\Api\TaskAiController;
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\SubtaskController;
 
@@ -15,6 +16,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks/{id}', [TaskController::class, 'show']);
     Route::put('/tasks/{id}', [TaskController::class, 'update']);
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
+
+    Route::post('/tasks/{task}/generate-subtasks', [TaskAiController::class, 'generateSubtasks'])
+        ->name('api.tasks.generate-subtasks');
 
     Route::get('/subtasks', [SubtaskController::class, 'index']);
     Route::post('/subtasks', [SubtaskController::class, 'store']);
